@@ -45,12 +45,14 @@ export default function Hero() {
             </div>
 
             {/* Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-white leading-[1.15] tracking-tight">
+            <h1 className="text-2xl xs:text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-white leading-[1.15] tracking-tight">
               Limpieza Profesional
               <br />
-              para tu{' '}
-              <span key={wordIndex} className="text-sky-300 inline-block whitespace-nowrap animate-fade-in">
-                {words[wordIndex]}
+              <span className="whitespace-nowrap">
+                para tu{' '}
+                <span key={wordIndex} className="text-sky-300 inline-block animate-fade-in">
+                  {words[wordIndex]}
+                </span>
               </span>
               <br />
               en Isla de Margarita
