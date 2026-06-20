@@ -18,9 +18,9 @@ const footerLinks = {
     { href: '/book', label: 'Reservar' },
   ],
   legal: [
-    { href: '#', label: 'Términos y Condiciones' },
-    { href: '#', label: 'Política de Privacidad' },
-    { href: '#', label: 'Política de Cancelación' },
+    { href: '/terms', label: 'Términos y Condiciones' },
+    { href: '/privacy', label: 'Política de Privacidad' },
+    { href: '/cancellation', label: 'Política de Cancelación' },
   ],
 };
 
@@ -33,12 +33,12 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-2 mb-4">
-              <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white font-bold text-lg">
+              <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500 to-sky-600 text-white font-bold text-lg">
                 TC
               </div>
               <div>
                 <h3 className="text-lg font-bold text-white leading-tight">
-                  The Cleaning <span className="text-emerald-400">Couple</span>
+                  The Cleaning <span className="text-sky-400">Couple</span>
                 </h3>
               </div>
             </Link>
@@ -69,7 +69,7 @@ export default function Footer() {
               </a>
               <a
                 href="mailto:info@thecleaningcouple.com"
-                className="flex items-center justify-center w-10 h-10 rounded-lg bg-emerald-600/20 text-emerald-400 hover:bg-emerald-600 hover:text-white transition-all"
+                className="flex items-center justify-center w-10 h-10 rounded-lg bg-sky-600/20 text-sky-400 hover:bg-sky-600 hover:text-white transition-all"
                 aria-label="Email"
               >
                 <FaEnvelope className="text-lg" />
@@ -85,7 +85,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-400 hover:text-emerald-400 transition-colors"
+                    className="text-sm text-gray-400 hover:text-sky-400 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -102,7 +102,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-400 hover:text-emerald-400 transition-colors"
+                    className="text-sm text-gray-400 hover:text-sky-400 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -115,7 +115,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-400 hover:text-emerald-400 transition-colors"
+                    className="text-sm text-gray-400 hover:text-sky-400 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -136,19 +136,19 @@ export default function Footer() {
                     href="https://wa.me/+584121234567"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white hover:text-emerald-400 transition-colors"
+                    className="text-white hover:text-sky-400 transition-colors"
                   >
                     +58 412-1234567
                   </a>
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <FaEnvelope className="text-emerald-400 mt-1 shrink-0" />
+                <FaEnvelope className="text-sky-400 mt-1 shrink-0" />
                 <div>
                   <p className="text-sm text-gray-400">Email</p>
                   <a
                     href="mailto:info@thecleaningcouple.com"
-                    className="text-white hover:text-emerald-400 transition-colors"
+                    className="text-white hover:text-sky-400 transition-colors"
                   >
                     info@thecleaningcouple.com
                   </a>
@@ -167,7 +167,7 @@ export default function Footer() {
                 <FaPhone className="text-accent-400 mt-1 shrink-0" />
                 <div>
                   <p className="text-sm text-gray-400">Teléfono</p>
-                  <a href="tel:+584121234567" className="text-white hover:text-emerald-400">
+                  <a href="tel:+584121234567" className="text-white hover:text-sky-400">
                     +58 412-1234567
                   </a>
                 </div>
