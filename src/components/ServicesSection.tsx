@@ -124,7 +124,7 @@ function ServiceCard({ name, description, price, duration, includes, notIncludes
     >
       {/* Popular Badge */}
       {isPopular && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-sky-500 to-cyan-500 text-white text-xs font-bold px-4 py-1 rounded-full shadow-md z-10">
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-sky-500 to-cyan-500 text-white text-xs font-bold px-4 py-1 rounded-full shadow-md z-20">
           Más Popular
         </div>
       )}
