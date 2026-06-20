@@ -223,6 +223,7 @@ export default function ServicesSection() {
               prevEl: '.swiper-button-prev-custom',
             }}
             pagination={{
+              el: '.swiper-pagination-services',
               clickable: true,
               bulletClass: 'swiper-pagination-bullet bg-gray-300 !opacity-100 !w-2.5 !h-2.5 !mx-1 transition-all duration-300',
               bulletActiveClass: '!bg-sky-500 !w-6 !rounded-full',
@@ -235,7 +236,7 @@ export default function ServicesSection() {
                 slidesPerView: 3,
               },
             }}
-            className="pb-16"
+            className="pb-4"
           >
             {serviceData.map((service) => (
               <SwiperSlide key={service.slug} className="h-auto">
@@ -243,6 +244,9 @@ export default function ServicesSection() {
               </SwiperSlide>
             ))}
           </Swiper>
+
+          {/* Custom Pagination Container */}
+          <div className="swiper-pagination-services flex justify-center items-center gap-1 mt-4 mb-8" />
 
           {/* Navigation Arrows */}
           <button className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-gray-150 bg-white flex items-center justify-center text-gray-600 hover:text-sky-500 hover:border-sky-500 hover:shadow-md transition-all z-10 hidden sm:flex">
