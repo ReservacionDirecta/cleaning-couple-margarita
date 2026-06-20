@@ -2,8 +2,15 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { FaCheck, FaTimes, FaClock, FaDollarSign, FaArrowRight } from 'react-icons/fa';
+import { FaCheck, FaTimes, FaClock, FaDollarSign, FaArrowRight, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Button from '@/components/ui/Button';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 interface ServiceCardProps {
   name: string;
@@ -109,7 +116,7 @@ const serviceData: ServiceCardProps[] = [
 function ServiceCard({ name, description, price, duration, includes, notIncludes, isPopular, icon, slug }: ServiceCardProps) {
   return (
     <div
-      className={`relative rounded-2xl bg-white border transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${
+      className={`relative rounded-2xl bg-white border transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full flex flex-col justify-between ${
         isPopular
           ? 'border-sky-500 shadow-lg ring-2 ring-sky-500/20'
           : 'border-gray-100 shadow-sm'
@@ -117,61 +124,63 @@ function ServiceCard({ name, description, price, duration, includes, notIncludes
     >
       {/* Popular Badge */}
       {isPopular && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-sky-500 to-cyan-500 text-white text-xs font-bold px-4 py-1 rounded-full shadow-md">
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-sky-500 to-cyan-500 text-white text-xs font-bold px-4 py-1 rounded-full shadow-md z-10">
           Más Popular
         </div>
       )}
 
-      <div className="p-6 lg:p-8">
-        {/* Header */}
-        <div className="flex items-center gap-3 mb-4">
-          <span className="text-3xl">{icon}</span>
-          <h3 className="text-xl font-bold text-gray-900">{name}</h3>
-        </div>
+      <div className="p-6 lg:p-8 flex flex-col h-full justify-between">
+        <div>
+          {/* Header */}
+          <div className="flex items-center gap-3 mb-4">
+            <span className="text-3xl">{icon}</span>
+            <h3 className="text-xl font-bold text-gray-900">{name}</h3>
+          </div>
 
-        <p className="text-gray-600 text-sm leading-relaxed mb-6">{description}</p>
+          <p className="text-gray-600 text-sm leading-relaxed mb-6">{description}</p>
 
-        {/* Price */}
-        <div className="flex items-baseline gap-1 mb-2">
-          <FaDollarSign className="text-sky-500 text-lg" />
-          <span className="text-4xl font-bold text-gray-900">{price}</span>
-          <span className="text-gray-500 text-sm">USD</span>
-        </div>
+          {/* Price */}
+          <div className="flex items-baseline gap-1 mb-2">
+            <FaDollarSign className="text-sky-500 text-lg" />
+            <span className="text-4xl font-bold text-gray-900">{price}</span>
+            <span className="text-gray-500 text-sm">USD</span>
+          </div>
 
-        {/* Duration */}
-        <div className="flex items-center gap-2 text-sm text-gray-500 mb-6">
-          <FaClock className="text-sky-500" />
-          <span>{duration} minutos</span>
-        </div>
+          {/* Duration */}
+          <div className="flex items-center gap-2 text-sm text-gray-500 mb-6">
+            <FaClock className="text-sky-500" />
+            <span>{duration} minutos</span>
+          </div>
 
-        {/* Includes */}
-        <div className="mb-6">
-          <h4 className="text-sm font-semibold text-gray-900 mb-3">Incluye:</h4>
-          <ul className="space-y-2">
-            {includes.map((item, i) => (
-              <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                <FaCheck className="text-sky-500 mt-0.5 shrink-0" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+          {/* Includes */}
+          <div className="mb-6">
+            <h4 className="text-sm font-semibold text-gray-900 mb-3">Incluye:</h4>
+            <ul className="space-y-2">
+              {includes.map((item, i) => (
+                <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
+                  <FaCheck className="text-sky-500 mt-0.5 shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        {/* Not Includes */}
-        <div className="mb-8">
-          <h4 className="text-sm font-semibold text-gray-900 mb-3">No incluye:</h4>
-          <ul className="space-y-2">
-            {notIncludes.map((item, i) => (
-              <li key={i} className="flex items-start gap-2 text-sm text-gray-500">
-                <FaTimes className="text-red-400 mt-0.5 shrink-0" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+          {/* Not Includes */}
+          <div className="mb-8">
+            <h4 className="text-sm font-semibold text-gray-900 mb-3">No incluye:</h4>
+            <ul className="space-y-2">
+              {notIncludes.map((item, i) => (
+                <li key={i} className="flex items-start gap-2 text-sm text-gray-500">
+                  <FaTimes className="text-red-400 mt-0.5 shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         {/* CTA */}
-        <Link href={`/book?service=${slug}`}>
+        <Link href={`/book?service=${slug}`} className="mt-auto block">
           <Button
             variant={isPopular ? 'primary' : 'outline'}
             fullWidth
@@ -188,33 +197,64 @@ function ServiceCard({ name, description, price, duration, includes, notIncludes
 
 export default function ServicesSection() {
   return (
-    <section className="section-padding bg-white" id="services">
-      <div className="container-custom">
+    <section className="section-padding bg-white relative overflow-hidden" id="services">
+      <div className="container-custom relative">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="inline-block text-sm font-semibold text-sky-600 bg-sky-100 px-4 py-1.5 rounded-full mb-4">
             Nuestros Servicios
           </span>
           <h2 className="section-title">
-            Servicios de limpieza{' '}
-            <span className="gradient-text">profesional</span>
+            Servicios de limpieza <span className="gradient-text">profesional</span>
           </h2>
           <p className="section-subtitle">
-            Ofrecemos una gama completa de servicios de limpieza diseñados 
-            específicamente para propiedades Airbnb y alojamientos turísticos 
-            en Isla de Margarita.
+            Desliza para ver nuestros planes diseñados para propiedades Airbnb y alojamientos turísticos en Isla de Margarita.
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {serviceData.map((service) => (
-            <ServiceCard key={service.slug} {...service} />
-          ))}
+        {/* Slider Controls Container */}
+        <div className="relative px-4 sm:px-12">
+          <Swiper
+            modules={[Pagination, Navigation]}
+            spaceBetween={24}
+            slidesPerView={1}
+            navigation={{
+              nextEl: '.swiper-button-next-custom',
+              prevEl: '.swiper-button-prev-custom',
+            }}
+            pagination={{
+              clickable: true,
+              bulletClass: 'swiper-pagination-bullet bg-gray-300 !opacity-100 !w-2.5 !h-2.5 !mx-1 transition-all duration-300',
+              bulletActiveClass: '!bg-sky-500 !w-6 !rounded-full',
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
+            className="pb-16"
+          >
+            {serviceData.map((service) => (
+              <SwiperSlide key={service.slug} className="h-auto">
+                <ServiceCard {...service} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Navigation Arrows */}
+          <button className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-gray-150 bg-white flex items-center justify-center text-gray-600 hover:text-sky-500 hover:border-sky-500 hover:shadow-md transition-all z-10 hidden sm:flex">
+            <FaChevronLeft className="text-sm" />
+          </button>
+          <button className="swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-gray-150 bg-white flex items-center justify-center text-gray-600 hover:text-sky-500 hover:border-sky-500 hover:shadow-md transition-all z-10 hidden sm:flex">
+            <FaChevronRight className="text-sm" />
+          </button>
         </div>
 
         {/* View All CTA */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-6">
           <Link href="/services">
             <Button variant="ghost" size="lg" rightIcon={<FaArrowRight />}>
               Ver todos los servicios y detalles
@@ -225,3 +265,4 @@ export default function ServicesSection() {
     </section>
   );
 }
+
