@@ -334,6 +334,28 @@ export default function BookingForm() {
             </p>
           </div>
 
+          {/* User-friendly WhatsApp bypass callout */}
+          <div className="bg-green-50 border border-green-200 text-green-800 rounded-2xl p-5 mb-8 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
+            <div className="text-center sm:text-left">
+              <p className="font-bold text-base flex items-center justify-center sm:justify-start gap-1.5 text-green-900 mb-1">
+                🟢 ¿Prefieres reservar de forma más fácil?
+              </p>
+              <p className="text-sm text-green-700">
+                Puedes agendar directamente enviándonos un mensaje de WhatsApp y te atenderemos al instante.
+              </p>
+            </div>
+            <a
+              href="https://wa.me/+584121234567?text=Hola!%20Quiero%20reservar%20un%20servicio%20de%20limpieza"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto shrink-0"
+            >
+              <Button className="w-full justify-center bg-green-600 hover:bg-green-700 text-white border-none gap-2 py-3 px-6 rounded-xl font-bold shadow">
+                <FaWhatsapp className="text-lg" /> Chatear ahora
+              </Button>
+            </a>
+          </div>
+
           <div className="grid sm:grid-cols-2 gap-4">
             {serviceCategories.map((service) => (
               <button
