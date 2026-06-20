@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "description": "The Cleaning Couple Margarita - Professional Cleaning Services in Margarita, Venezuela",
+  "supportedArchitectures": {
+    "os": ["win32", "linux"],
+    "cpu": ["x64"]
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
